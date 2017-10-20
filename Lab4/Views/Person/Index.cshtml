@@ -1,0 +1,55 @@
+﻿@model Lab4.Models.Person
+
+@{
+    ViewData["Title"] = "Person";
+    Layout = "~/Index/Shared/_Layout.cshtml";
+}
+
+<h2>Person</h2>
+
+
+@if (@Model.FirstName != null)
+{
+<div>
+    <h4>Person</h4>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+    </dl>
+
+</div>
+    }
+    else
+    {
+        <div>
+            <h4>No Person Available</h4>
+    </div>
+
+    }
+<div>
+    @Html.ActionLink("Add Person", "Add Person", new { /* id = Model.PrimaryKey */ }) 
+    <a href="~/Home/Index">Home</a>
+</div>
