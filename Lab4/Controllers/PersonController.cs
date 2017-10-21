@@ -14,5 +14,35 @@ namespace Lab4.Controllers
             Person p = new Person();
             return View(p);
         }
+        public IActionResult addPerson()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult addPerson(Person p)
+        {
+            if (ModelState.IsValid)
+            {
+
+                int today = int.Parse(DateTime.Now.ToString("yyyyMMdd"));
+
+                int dob = int.Parse(p.BirthDate.ToString("yyyyMMdd"));
+
+                int Age = (today - dob) / 10000;
+
+                String birthdate = p.BirthDate.ToShortDateString();
+
+                ViewData["age"] = Age;
+
+                ViewData["birthdate"] = birthdate;
+
+                return View("Person", p);
+            }
+            else
+            {
+                return View(viewName: "addPerson");
+            }
+
+        }
     }
 }
